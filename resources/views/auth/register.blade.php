@@ -11,17 +11,17 @@
 
             <div>
                 <x-label for="first_name" value="{{ __('First Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
             <br>
             <div>
                 <x-label for="last_name" value="{{ __('Last Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
                  <br>
             <div>
                 <x-label for="business_name" value="{{ __('Business Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="business_name" class="block mt-1 w-full" type="text" name="business_name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
             <br>
             <div>
