@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClothesController;
+use App\Http\Controllers\FoodsController;
+use App\Http\Controllers\ShoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::post('/clothes', [ClothesController::class, 'store'])->name('clothes.store');
+Route::post('/shoes', [ShoesController::class, 'store'])->name('shoes.store');
+Route::post('/foods', [FoodsController::class, 'store'])->name('foods.store');
+
+
