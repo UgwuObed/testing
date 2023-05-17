@@ -22,22 +22,21 @@ class ShoesController extends Controller
         'brand' => 'required|string|max:255',
         'price' => 'required|numeric',
         'description' => 'nullable|string',
-        'image_url' => 'nullable|url',
         'category' => 'required|string|max:255',
     ]);
 
+
     // create new shoes product
-    $clothes = new Shoes;
-    $clothes->name = $validatedData['name'];
-    $clothes->type = $validatedData['type'];
-    $clothes->color = $validatedData['color'];
-    $clothes->size = $validatedData['size'];
-    $clothes->brand = $validatedData['brand'];
-    $clothes->price = $validatedData['price'];
-    $clothes->description = $validatedData['description'];
-    $clothes->image_url = $validatedData['image_url'];
-    $clothes->category = $validatedData['category'];
-    $clothes->save();
+    $shoes = new Shoes;
+    $shoes ->name = $validatedData['name'];
+    $shoes ->type = $validatedData['type'];
+    $shoes ->color = $validatedData['color'];
+    $shoes ->size = $validatedData['size'];
+    $shoes ->brand = $validatedData['brand'];
+    $shoes ->price = $validatedData['price'];
+    $shoes ->description = $validatedData['description'];
+    $shoes ->category = $validatedData['category'];
+    $shoes ->save();
 
     // redirect back to form with success message
     return redirect()->back()->with('success', 'Clothes product created successfully!');

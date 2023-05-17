@@ -17,7 +17,7 @@ class Clothes extends Model
         'brand',
         'price',
         'description',
-        'image_url',
+        'image',
         'category',
         'gender'
     ];

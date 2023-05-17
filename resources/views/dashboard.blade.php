@@ -1,4 +1,4 @@
-<form action="{{ route('clothes.store') }}" method="POST">
+<form action="{{ route('clothes.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <label for="name">Name</label>
@@ -22,9 +22,9 @@
     <label for="description">Description</label>
     <textarea name="description"></textarea>
 
-    <label for="image_url">Image URL</label>
-    <input type="text" name="image_url">
-
+     <label for="image">Image:</label>
+     <input type="file" name="image" id="image">
+     
     <label for="category">Category</label>
         <select name="category" required>
         <option value="male">Male</option>
@@ -56,8 +56,9 @@
     <label for="description">Description</label>
     <textarea name="description"></textarea>
 
-    <label for="image_url">Image URL</label>
-    <input type="text" name="image_url">
+     <label for="image">Image:</label>
+     <input type="file" name="image" id="image">
+
 
     <label for="category">Category</label>
         <select name="category" required>
@@ -95,8 +96,8 @@
     <label for="description">Description</label>
     <textarea name="description"></textarea>
 
-    <label for="image_url">Image URL</label>
-    <input type="text" name="image_url">
+     <label for="image">Image:</label>
+     <input type="file" name="image" id="image">
 
     <label for="category">Category</label>
         <select name="category" required>
