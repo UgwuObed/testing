@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Foods;
 use Illuminate\Http\Request;
 
@@ -51,4 +50,12 @@ class FoodsController extends Controller
 
         return response()->json(['success'=>'Image uploaded successfully.']);
     }
+
+    public function index()
+{
+    $foods = Foods::all(); // Retrieve all foods from the database
+
+    return view('foods.index', compact('foods'));
+}
+
 }

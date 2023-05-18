@@ -44,5 +44,10 @@ Route::post('/foods/upload-image', [FoodsController::class, 'uploadImage'])->nam
 Route::post('/upload', [ShoesController::class, 'uploadImage'])->name('shoes.upload');
 Route::post('/shoes/upload-image', [ShoesController::class, 'uploadImage'])->name('shoes.upload-image');
 
+//get product route 
+Route::get('/clothes', 'App\Http\Controllers\ClothesController@index')->name('clothes.index');
+Route::get('/foods', 'App\Http\Controllers\FoodsController@index')->name('foods.index');
+Route::get('/shoes', 'App\Http\Controllers\ShoesController@index')->name('shoes.index');
+
 
 

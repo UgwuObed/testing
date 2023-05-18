@@ -55,4 +55,11 @@ class ClothesController extends Controller
 
         return response()->json(['success'=>'Image uploaded successfully.']);
     }
+
+    public function index()
+    {
+        $clothes = Clothes::all(); // Retrieve all foods from the database
+    
+        return view('clothes.index', compact('clothes'));
+    }
 }

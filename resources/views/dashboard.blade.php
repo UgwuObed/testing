@@ -1,3 +1,6 @@
+<br><br><br>
+<h1> Add Clothes products</h1>
+<br><br><br>
 <form action="{{ route('clothes.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -34,7 +37,15 @@
 
     <button type="submit">Create Product</button>
 </form>
-
+<br>
+<br><br>
+<ul>
+        <li><a href="{{ route('clothes.index') }}">View Clothes Products</a></li>
+    </ul>
+<br>
+<br>
+<h1> Add Food products</h1>
+<br>
 <br>
 <form action="{{ route('foods.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -69,9 +80,14 @@
 
     <button type="submit">Create Product</button>
 </form>
-
-<br>
-
+<br><br><br>
+<ul>
+        <li><a href="{{ route('foods.index') }}">View Food Products</a></li>
+    </ul>
+<br><br><br><br><br><br>
+<br><br><br>
+<h1> Add Shoes products</h1>
+<br><br><br>
 <form action="{{ route('shoes.store') }}" method="POST"  enctype="multipart/form-data">
     @csrf
 
@@ -108,5 +124,10 @@
 
     <button type="submit">Create Product</button>
 </form>
+<br><br><br>
+<ul>
+        <li><a href="{{ route('shoes.index') }}">View Shoe Products</a></li>
+    </ul>
+    <br><br><br><br>
 
 
