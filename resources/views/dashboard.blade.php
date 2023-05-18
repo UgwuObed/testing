@@ -62,9 +62,9 @@
 
     <label for="category">Category</label>
         <select name="category" required>
-        <option value="male">Local dish</option>
-        <option value="female">Continental dish</option>
-        <option value="unisex">International dish</option>
+        <option value="local dish">Local dish</option>
+        <option value="continental dish">Continental dish</option>
+        <option value="international dish">International dish</option>
     </select>
 
     <button type="submit">Create Product</button>
