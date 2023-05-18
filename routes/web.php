@@ -38,5 +38,11 @@ Route::post('/foods', [FoodsController::class, 'store'])->name('foods.store');
 Route::post('/upload', [ClothesController::class, 'uploadImage'])->name('clothes.upload');
 Route::post('/clothes/upload-image', [ClothesController::class, 'uploadImage'])->name('clothes.upload-image');
 
+Route::post('/upload', [FoodsController::class, 'uploadImage'])->name('foods.upload');
+Route::post('/foods/upload-image', [FoodsController::class, 'uploadImage'])->name('foods.upload-image');
+
+Route::post('/upload', [ShoesController::class, 'uploadImage'])->name('shoes.upload');
+Route::post('/shoes/upload-image', [ShoesController::class, 'uploadImage'])->name('shoes.upload-image');
+
 
 

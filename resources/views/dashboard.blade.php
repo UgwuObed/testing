@@ -36,7 +36,7 @@
 </form>
 
 <br>
-<form action="{{ route('foods.store') }}" method="POST">
+<form action="{{ route('foods.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <label for="name">Name</label>
@@ -72,7 +72,7 @@
 
 <br>
 
-<form action="{{ route('shoes.store') }}" method="POST">
+<form action="{{ route('shoes.store') }}" method="POST"  enctype="multipart/form-data">
     @csrf
 
     <label for="name">Name</label>
