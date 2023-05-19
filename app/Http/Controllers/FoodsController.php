@@ -21,15 +21,15 @@ class FoodsController extends Controller
         $imageName = time().'.'.$validatedData['image']->extension();  
         $validatedData['image']->move(public_path('images'), $imageName);
 
-        $foods = new Foods;
-        $foods->name = $validatedData['name'];
-        $foods->type = $validatedData['type'];
-        $foods->quantity = $validatedData['quantity'];
-        $foods->price = $validatedData['price'];
-        $foods->description = $validatedData['description'];
-        $foods->category = $validatedData['category'];
-        $foods->image_url = $imageName;
-        $foods->save();
+        $food = new Foods;
+        $food->name = $validatedData['name'];
+        $food->type = $validatedData['type'];
+        $food->quantity = $validatedData['quantity'];
+        $food->price = $validatedData['price'];
+        $food->description = $validatedData['description'];
+        $food->category = $validatedData['category'];
+        $food->image_url = $imageName;
+        $food->save();
 
         // redirect back to form with success message
         return redirect()->back()->with('success', 'Food product created successfully!');
@@ -62,43 +62,58 @@ class FoodsController extends Controller
         return view('foods.edit', compact('food'));
     }
 
-    public function update(Request $request, Foods $food)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
-            'quantity' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'nullable|string',
-            'category' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
+public function update(Request $request, Foods $food)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'type' => 'required|string|max:255',
+        'quantity' => 'required|string|max:255',
+        'price' => 'required|numeric',
+        'description' => 'nullable|string',
+        'category' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
 
-        if ($request->hasFile('image')) {
-            // If a new image is uploaded, update the image URL
-            $imageName = time().'.'.$validatedData['image']->extension();  
-            $validatedData['image']->move(public_path('images'), $imageName);
-            $foods->image_url = $imageName;
-        }
-
-        $foods->name = $validatedData['name'];
-        $foods->type = $validatedData['type'];
-        $foods->quantity = $validatedData['quantity'];
-        $foods->price = $validatedData['price'];
-        $foods->description = $validatedData['description'];
-        $foods->category = $validatedData['category'];
-        $foods->save();
-
-        // Redirect the user to the food item details page with a success message
-        return redirect()->route('foods.store', $food)->with('success', 'Food item updated successfully!');
+    // Delete the old food item image if a new image is uploaded
+    if ($request->hasFile('image')) {
+        $this->deleteFoodImage($food);
     }
 
-    public function destroy(Foods $food)
-    {
-        // Delete the food item from the database
-        $food->delete();
+    $food->name = $validatedData['name'];
+    $food->type = $validatedData['type'];
+    $food->quantity = $validatedData['quantity'];
+    $food->price = $validatedData['price'];
+    $food->description = $validatedData['description'];
+    $food->category = $validatedData['category'];
 
-        // Redirect the user to the food items list page with a success message
-        return redirect()->route('foods.index')->with('success', 'Food item deleted successfully.');
+    if ($request->hasFile('image')) {
+        $imageName = time().'.'.$validatedData['image']->extension();  
+        $validatedData['image']->move(public_path('images'), $imageName);
+        $food->image_url = $imageName;
     }
+
+    $food->save();
+
+    // Redirect the user to the food items list page with a success message
+    return redirect()->route('foods.index')->with('success', 'Food item updated successfully!');
+}
+
+private function deleteFoodImage(Foods $food)
+{
+    // Delete the old food item image from the storage
+    $imagePath = public_path('images/'.$food->image_url);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+}
+
+public function destroy(Foods $food)
+{
+    // Delete the food item from the database
+    $food->delete();
+
+    // Redirect the user to the food items list page with a success message
+    return redirect()->route('foods.index')->with('success', 'Food item deleted successfully.');
+}
+
 }
