@@ -50,4 +50,8 @@ Route::get('/foods', 'App\Http\Controllers\FoodsController@index')->name('foods.
 Route::get('/shoes', 'App\Http\Controllers\ShoesController@index')->name('shoes.index');
 
 
-
+// foods route for delete, update and edit
+Route::get('/foods', [FoodsController::class, 'index'])->name('foods.index');
+Route::get('/foods/{food}/edit', [FoodsController::class, 'edit'])->name('foods.edit');
+Route::put('/foods/{food}', [FoodsController::class, 'update'])->name('foods.update');
+Route::delete('/foods/{food}', [FoodsController::class, 'destroy'])->name('foods.destroy');

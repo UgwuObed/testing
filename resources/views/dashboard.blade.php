@@ -68,12 +68,6 @@
     <label for="image">Image:</label>
     <input type="file" name="image" id="image">
 
-    <label for="image2">Image 2:</label>
-    <input type="file" name="image2" id="image2">
-
-    <label for="image3">Image 3:</label>
-    <input type="file" name="image3" id="image3">
-
     <label for="category">Category</label>
     <select name="category" required>
         <option value="local dish">Local dish</option>

@@ -12,4 +12,16 @@
             <img src="{{ asset('images/' . $food->image_url) }}" alt="Food Image" width="200">
         </div>
         <hr>
-    @endforeach
+    
+
+    <!-- Link to edit form -->
+<a href="{{ route('foods.edit', $food) }}">Edit</a>
+
+<!-- Delete form -->
+<form action="{{ route('foods.destroy', $food) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this food item?')">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit">Delete</button>
+</form>
+@endforeach
