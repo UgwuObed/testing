@@ -56,10 +56,8 @@
     <label for="type">Type</label>
     <input type="text" name="type" required>
 
-
-    <label for="size">Quantity</label>
+    <label for="quantity">Quantity</label>
     <input type="text" name="quantity" required>
-
 
     <label for="price">Price</label>
     <input type="number" name="price" required>
@@ -67,12 +65,17 @@
     <label for="description">Description</label>
     <textarea name="description"></textarea>
 
-     <label for="image">Image:</label>
-     <input type="file" name="image" id="image">
+    <label for="image">Image:</label>
+    <input type="file" name="image" id="image">
 
+    <label for="image2">Image 2:</label>
+    <input type="file" name="image2" id="image2">
+
+    <label for="image3">Image 3:</label>
+    <input type="file" name="image3" id="image3">
 
     <label for="category">Category</label>
-        <select name="category" required>
+    <select name="category" required>
         <option value="local dish">Local dish</option>
         <option value="continental dish">Continental dish</option>
         <option value="international dish">International dish</option>
@@ -80,6 +83,8 @@
 
     <button type="submit">Create Product</button>
 </form>
+
+
 <br><br><br>
 <ul>
         <li><a href="{{ route('foods.index') }}">View Food Products</a></li>
