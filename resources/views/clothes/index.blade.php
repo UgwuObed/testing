@@ -13,4 +13,14 @@
         <img src="{{ asset('images/' . $cloth->image_url) }}" alt="cloth Image" width="200">
     </div>
     <hr>
+        <!-- Link to edit form -->
+<a href="{{ route('clothes.edit', $cloth) }}">Edit</a>
+
+<!-- Delete form -->
+<form action="{{ route('clothes.destroy', $cloth) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit">Delete</button>
+</form>
 @endforeach

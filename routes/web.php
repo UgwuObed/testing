@@ -55,3 +55,15 @@ Route::get('/foods', [FoodsController::class, 'index'])->name('foods.index');
 Route::get('/foods/{food}/edit', [FoodsController::class, 'edit'])->name('foods.edit');
 Route::put('/foods/{food}', [FoodsController::class, 'update'])->name('foods.update');
 Route::delete('/foods/{food}', [FoodsController::class, 'destroy'])->name('foods.destroy');
+
+// clothes route for delete, update and edit
+Route::get('/clothes', [ClothesController::class, 'index'])->name('clothes.index');
+Route::get('/clothes/{clothes}/edit', [ClothesController::class, 'edit'])->name('clothes.edit');
+Route::put('/clothes/{clothes}', [ClothesController::class, 'update'])->name('clothes.update');
+Route::delete('/clothes/{clothes}', [ClothesController::class, 'destroy'])->name('clothes.destroy');
+
+// shoes route for delete, update and edit
+Route::get('/shoes', [ShoesController::class, 'index'])->name('shoes.index');
+Route::get('/shoes/{shoes}/edit', [ShoesController::class, 'edit'])->name('shoes.edit');
+Route::put('/shoes/{shoes}', [ShoesController::class, 'update'])->name('shoes.update');
+Route::delete('/shoes/{shoes}', [ShoesController::class, 'destroy'])->name('shoes.destroy');
