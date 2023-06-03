@@ -11,17 +11,17 @@
 
             <div>
                 <x-label for="first_name" value="{{ __('First Name') }}" />
-                <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
             </div>
             <br>
             <div>
                 <x-label for="last_name" value="{{ __('Last Name') }}" />
-                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
             </div>
                  <br>
             <div>
                 <x-label for="business_name" value="{{ __('Business Name') }}" />
-                <x-input id="business_name" class="block mt-1 w-full" type="text" name="business_name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="business_name" class="block mt-1 w-full" type="text" name="business_name" :value="old('business_name')" required autofocus autocomplete="business_name" />
             </div>
             <br>
             <div>
@@ -29,9 +29,27 @@
                 <x-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
             </div>
 
+                                                 <br>
+            <div>
+                <x-label for="country" value="{{ __('Country') }}" />
+                <x-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required autofocus autocomplete="country" />
+            </div>
+
+                        <br>
+            <div>
+                <x-label for="state" value="{{ __('State') }}" />
+                <x-input id="state" class="block mt-1 w-full" type="text" name="state" :value="old('state')" required autofocus autocomplete="state" />
+            </div>
+
+                                    <br>
+            <div>
+                <x-label for="city" value="{{ __('City') }}" />
+                <x-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
+            </div>
+
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" />
             </div>
 
             <div class="mt-4">
