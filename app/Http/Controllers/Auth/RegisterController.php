@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Http\Controllers\Auth;
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -10,48 +10,31 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
-        protected function create(array $data)
-        {
-            return User::create([
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'business_name' => $data['business_name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'phone' => $data['phone'],
-                'state' => $data['state'],
-                'country' => $data['country'],
-                'city' => $data['city'],
-            ]);
-        }
-
-    
     protected function validator(array $data)
-        {
-            return Validator::make($data, [
-                'first_name' => ['required', 'string', 'max:255'],
-                'last_name' => ['required', 'string', 'max:255'],
-                'business_name' => ['required', 'string', 'max:255', 'unique:users'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'phone' => ['required', 'string', 'min:10', 'max:20', 'unique:users'],
-                'state' => ['required', 'string', 'max:255'],
-                'country' => ['required', 'string', 'max:255'],
-                'city' => ['required', 'string', 'max:255'],
-            ]);
-        }
+    {
+        return Validator::make($data, [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'business_name' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'string', 'min:10', 'max:20', 'unique:users'],
+        ]);
+    }
 
-    
-        protected $fillable = [
-            'first_name',
-            'last_name',
-            'business_name',
-            'email',
-            'password',
-            'phone',
-            'state',
-            'country',
-            'city',
-        ];
+    protected function create(Request $request)
+    {
+        $this->validator($request->all())->validate();
 
+        $user = User::create([ 
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'business_name' => $request->input('business_name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'phone' => $request->input('phone'),
+        ]);
+
+        return redirect()->route('profile.create')->with('user_id', $user->id);
+    }
 }

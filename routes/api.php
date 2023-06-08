@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Register routes
+Route::get('register', [RegisterController::class, 'create'])->name('register.create');
+Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+// Profile routes
+Route::get('profile/create', [ProfileController::class, 'create'])->name('profile.create');
+Route::post('profile', [ProfileController::class, 'store'])->name('profile.store');

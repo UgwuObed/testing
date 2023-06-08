@@ -30,22 +30,7 @@
             </div>
 
                                                  <br>
-            <div>
-                <x-label for="country" value="{{ __('Country') }}" />
-                <x-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required autofocus autocomplete="country" />
-            </div>
 
-                        <br>
-            <div>
-                <x-label for="state" value="{{ __('State') }}" />
-                <x-input id="state" class="block mt-1 w-full" type="text" name="state" :value="old('state')" required autofocus autocomplete="state" />
-            </div>
-
-                                    <br>
-            <div>
-                <x-label for="city" value="{{ __('City') }}" />
-                <x-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
-            </div>
 
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClothesController;
 use App\Http\Controllers\FoodsController;
 use App\Http\Controllers\ShoesController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,19 @@ use App\Http\Controllers\ShoesController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+// Register routes
+Route::get('register', [RegisterController::class, 'create'])->name('register.create');
+Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+// Profile routes
+Route::get('profile/create', [ProfileController::class, 'create'])->name('profile.create');
+Route::post('profile', [ProfileController::class, 'store'])->name('profile.store');
+
+
+
 
 Route::middleware([
     'auth:sanctum',
