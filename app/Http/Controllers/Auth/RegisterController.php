@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Auth;
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -10,6 +10,20 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
+    public function create()
+    {
+        return view('auth.register');
+    }
+
+    public function store(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->createUser($request);
+
+        return redirect()->route('profile.create')->with('user_id', $user->id);
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -22,11 +36,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function create(Request $request)
+    protected function createUser(Request $request)
     {
-        $this->validator($request->all())->validate();
-
-        $user = User::create([ 
+        return User::create([ 
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'business_name' => $request->input('business_name'),
@@ -34,7 +46,5 @@ class RegisterController extends Controller
             'password' => Hash::make($request->input('password')),
             'phone' => $request->input('phone'),
         ]);
-
-        return redirect()->route('profile.create')->with('user_id', $user->id);
     }
 }
