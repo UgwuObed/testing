@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -15,14 +14,16 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store(Request $request)
-    {
-        $this->validator($request->all())->validate();
+public function store(Request $request)
+{
+    $this->validator($request->all())->validate();
 
-        $user = $this->createUser($request);
+    $user = $this->createUser($request);
 
-        return redirect()->route('profile.create')->with('user_id', $user->id);
-    }
+    auth()->login($user);
+
+    return redirect()->route('dashboard');
+}
 
     protected function validator(array $data)
     {
@@ -38,7 +39,7 @@ class RegisterController extends Controller
 
     protected function createUser(Request $request)
     {
-        return User::create([ 
+        return User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'business_name' => $request->input('business_name'),

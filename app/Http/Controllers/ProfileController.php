@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use Spatie\FlareClient\Flare;
+
 
 class ProfileController extends Controller
 {
@@ -29,9 +31,6 @@ class ProfileController extends Controller
             'city' => $request->input('city'),
         ]);
 
-        $request->session()->forget('user_id');
-
         return redirect('/dashboard')->with('success', 'Profile created successfully.');
     }
 }
-
