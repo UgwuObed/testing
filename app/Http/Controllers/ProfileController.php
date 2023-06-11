@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Profile;
-use Spatie\FlareClient\Flare;
-
 
 class ProfileController extends Controller
 {
-    public function create()
+    public function show()
     {
-        return view('profile.create');
+        $user = Auth::user();
+        return view('profile.show', ['user' => $user]);
     }
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'country' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-        ]);
+        $user = Auth::user();
+        $user->state = $request->input('state');
+        $user->city = $request->input('city');
+        $user->save();
 
-        $userId = $request->session()->get('user_id');
+        return redirect()->route('dashboard');
+    }
 
-        Profile::create([
-            'user_id' => $userId,
-            'country' => $request->input('country'),
-            'state' => $request->input('state'),
-            'city' => $request->input('city'),
-        ]);
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->state = $request->input('state');
+        $user->city = $request->input('city');
+        $user->save();
 
-        return redirect('/dashboard')->with('success', 'Profile created successfully.');
+        return redirect()->route('dashboard');
     }
 }

@@ -4,9 +4,10 @@
     Logout
 </a>
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+<br>
+<a href="{{ route('profile.show') }}">Profile</a>
+
+
 
 <br><br><br>
 <h1> Add Clothes products</h1>

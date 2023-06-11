@@ -26,15 +26,17 @@ Route::get('/', function () {
 
 
 
-Route::middleware('web')->group(function () {
+
     // Register routes
     Route::get('register', [RegisterController::class, 'create'])->name('register.create');
     Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 
-    // Profile routes
-    Route::get('profile/create', [ProfileController::class, 'create'])->name('profile.create');
-    Route::post('profile', [ProfileController::class, 'store'])->name('profile.store');
-});
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
 
 
 
